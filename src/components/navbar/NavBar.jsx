@@ -2,8 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
 import cart from "../../assets/cart.jpg";
+import { useContext } from "react";
+import { ShopContext } from "../../context/ShopContext";
 
 const NavBar = () => {
+    const { getTotalCartItems } = useContext(ShopContext);
     return (
         <nav className="bg-white shadow-md py-3 px-6 flex items-center justify-between sticky top-0 z-50">
             <div className="flex items-center gap-3">
@@ -73,7 +76,7 @@ const NavBar = () => {
                             className="h-8 w-8 object-contain cursor-pointer hover:scale-110 transition-transform"
                         />
                         <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-2 py-0.5 font-bold">
-                            0
+                            {getTotalCartItems()}
                         </span>
                     </NavLink>
                 </div>
